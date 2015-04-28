@@ -50,7 +50,7 @@
             return feature.properties.Category == "ATM";
         },
 	     onEachFeature: function (feature, layer) {
-	         layer.bindPopup(feature.properties.Name+feature.properties.Descriptio);
+	         layer.bindPopup(feature.properties.Name+"<br>"+feature.properties.Descriptio);
 	     },
 	    pointToLayer: function(feature, latlng) {
 	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'red', color: 'transparent'});
@@ -62,7 +62,7 @@
             return feature.properties.Category == "Gcash";
         },
 	     onEachFeature: function (feature, layer) {
-	         layer.bindPopup(feature.properties.Name+feature.properties.Descriptio);
+	         layer.bindPopup(feature.properties.Name+"<br>"+feature.properties.Descriptio);
 	     },
 	    pointToLayer: function(feature, latlng) {
 	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'green', color: 'transparent'});
@@ -73,7 +73,7 @@
             return feature.properties.Category == "BPI Globe Banko";
         },
 	     onEachFeature: function (feature, layer) {
-	         layer.bindPopup(feature.properties.Name+feature.properties.Descriptio);
+	         layer.bindPopup(feature.properties.Name+"<br>"+feature.properties.Descriptio);
 	     },
 	    pointToLayer: function(feature, latlng) {
 	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'blue', color: 'transparent'});
@@ -85,7 +85,7 @@
             return feature.properties.Category == "Smart Money";
         },
 	     onEachFeature: function (feature, layer) {
-	         layer.bindPopup(feature.properties.Name+feature.properties.Descriptio);
+	         layer.bindPopup(feature.properties.Name+"<br>"+feature.properties.Descriptio);
 	     },
 	    pointToLayer: function(feature, latlng) {
 	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'orange', color: 'transparent'});
@@ -96,7 +96,7 @@
             return feature.properties.Category == "Cebuana Lhuillier";
         },
 	     onEachFeature: function (feature, layer) {
-	         layer.bindPopup(feature.properties.Name+feature.properties.Descriptio);
+	         layer.bindPopup(feature.properties.Name+"<br>"+feature.properties.Descriptio);
 	     },
 	    pointToLayer: function(feature, latlng) {
 	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'purple', color: 'transparent'});
@@ -107,7 +107,7 @@
             return feature.properties.Category == "LBC";
         },
 	     onEachFeature: function (feature, layer) {
-	         layer.bindPopup(feature.properties.Name+feature.properties.Descriptio);
+	         layer.bindPopup(feature.properties.Name+"<br>"+feature.properties.Descriptio);
 	     },
 	    pointToLayer: function(feature, latlng) {
 	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'cyan', color: 'transparent'});
@@ -118,7 +118,7 @@
             return feature.properties.Category == "Post Office";
         },
 	     onEachFeature: function (feature, layer) {
-	         layer.bindPopup(feature.properties.Name+feature.properties.Descriptio);
+	         layer.bindPopup(feature.properties.Name+"<br>"+feature.properties.Descriptio);
 	     },
 	    pointToLayer: function(feature, latlng) {
 	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'yellow', color: 'transparent'});
