@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Philippines: Financial Service Provider Map</title> 
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	
+	<script src="philfspsclean.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+	<link rel="stylesheet" href="assets/leaflet_awesome/leaflet.awesome-markers.css">
+	<script src="assets/leaflet_awesome/leaflet.awesome-markers.js"></script>
+	<script src="assets/leaflet-panel-layers-master/src/leaflet-panel-layers.js"></script>
+	<script src="assets/leaflet-panel-layers-master/src/leaflet-panel-layers.css"></script>
+	<style>
+
+		html, body, #map { height: 100%; width: 100%; padding: 0; margin: 0; }
+		#header {padding-right: 20px; background-color: #026bb5;}
+		h1 {font-family: arial;  font-size:1.2em; padding: 10px; color: #ffffff; margin: 0;}
+		.leaflet-panel-layers {width: 200px; background-color: #ffffff; opacity: .5; padding:10px; margin:0 !important;}
+		.leaflet-panel-layers-list label {display: block; float: left; width: 100%;}
+		.leaflet-panel-layers-base {margin-bottom: 10px;}
+	</style>
+	<script src="../src/leaflet-panel-layers.js"></script>
+</head>
+<body>
+	<div id="header">
+		<h1>Philippines: Financial Service Provider Map</h1>
+	</div>
+	<div id="map"></div>
+	<script>
+
+
+	var map = L.map('map').setView([12, 124], 7);
+		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+			id: 'examples.map-20v6611k'
+	}).addTo(map);
+
+
+
+    var ATMLayer = L.geoJson(FSP, {
+        filter: function(feature, layer) {
+            return feature.properties.Category == "ATM";
+        },
+	     onEachFeature: function (feature, layer) {
+	         layer.bindPopup(feature.properties.Descriptio);
+	     },
+	    pointToLayer: function(feature, latlng) {
+	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'red', color: 'transparent'});
+	    },
+
+    });
+    var GcashLayer = L.geoJson(FSP, {
+        filter: function(feature, layer) {
+            return feature.properties.Category == "Gcash";
+        },
+	     onEachFeature: function (feature, layer) {
+	         layer.bindPopup(feature.properties.Descriptio);
+	     },
+	    pointToLayer: function(feature, latlng) {
+	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'green', color: 'transparent'});
+	    },
+    });
+     var BPIGlobeBankoLayer = L.geoJson(FSP, {
+        filter: function(feature, layer) {
+            return feature.properties.Category == "BPI Globe Banko";
+        },
+	     onEachFeature: function (feature, layer) {
+	         layer.bindPopup(feature.properties.Descriptio);
+	     },
+	    pointToLayer: function(feature, latlng) {
+	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'blue', color: 'transparent'});
+	    },
+
+    });
+    var SmartMoneyLayer = L.geoJson(FSP, {
+        filter: function(feature, layer) {
+            return feature.properties.Category == "Smart Money";
+        },
+	     onEachFeature: function (feature, layer) {
+	         layer.bindPopup(feature.properties.Descriptio);
+	     },
+	    pointToLayer: function(feature, latlng) {
+	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'orange', color: 'transparent'});
+	    },
+    });
+     var CebuanaLayer = L.geoJson(FSP, {
+        filter: function(feature, layer) {
+            return feature.properties.Category == "Cebuana Lhuillier";
+        },
+	     onEachFeature: function (feature, layer) {
+	         layer.bindPopup(feature.properties.Descriptio);
+	     },
+	    pointToLayer: function(feature, latlng) {
+	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'purple', color: 'transparent'});
+	    },
+    });
+     var LBCLayer = L.geoJson(FSP, {
+        filter: function(feature, layer) {
+            return feature.properties.Category == "LBC";
+        },
+	     onEachFeature: function (feature, layer) {
+	         layer.bindPopup(feature.properties.Descriptio);
+	     },
+	    pointToLayer: function(feature, latlng) {
+	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'cyan', color: 'transparent'});
+	    },
+    });
+      var PostOfficeLayer = L.geoJson(FSP, {
+        filter: function(feature, layer) {
+            return feature.properties.Category == "Post Office";
+        },
+	     onEachFeature: function (feature, layer) {
+	         layer.bindPopup(feature.properties.Descriptio);
+	     },
+	    pointToLayer: function(feature, latlng) {
+	        return new L.CircleMarker(latlng, {radius: 5, fillColor: 'yellow', color: 'transparent'});
+	    },
+    });
+
+    ATMLayer.addTo(map);
+    GcashLayer.addTo(map);
+    BPIGlobeBankoLayer.addTo(map);
+    SmartMoneyLayer.addTo(map);
+    CebuanaLayer.addTo(map);
+    LBCLayer.addTo(map);
+    CebuanaLayer.addTo(map);
+    PostOfficeLayer.addTo(map);
+    
+
+var baseLayers = [	
+	{
+		group: "Map Types",
+		layers: [
+			{
+				name: "Simple",
+				layer: L.tileLayer('https://{s}.tiles.mapbox.com/v3/{examples.map-20v6611k}/{z}/{x}/{y}.png')
+			},
+			{
+				name: "Humanitarian",
+				layer: L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png')
+			}
+		]
+	}
+];
+
+var overLayers = [
+	{
+		group: "FSPs",
+		layers: [
+			{
+				name: "Gcash",
+				layer: GcashLayer
+			},	
+			{
+				name: "ATM",
+				layer: ATMLayer
+			},
+			{
+				name: "BPI Globe Banko",
+				layer: BPIGlobeBankoLayer
+			},	
+			{
+				name: "Smart Money",
+				layer: SmartMoneyLayer
+			},
+			{
+				name: "Cebuana Lhuillier",
+				layer: CebuanaLayer
+			},
+			{
+				name: "LBC",
+				layer: LBCLayer
+			},	
+			{
+				name: "Post Office",
+				layer: PostOfficeLayer
+			},
+		]
+	}
+
+];
+
+var panelLayers = new L.Control.PanelLayers(baseLayers, overLayers);
+
+map.addControl(panelLayers);
+
+
+
+	</script>
+</body>
+</html>
