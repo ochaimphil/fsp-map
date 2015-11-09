@@ -9,6 +9,7 @@
 	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 	
 	<script src="philfspsclean.js" type="text/javascript"></script>
+	<script src="poverty.js" type="text/javascript"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
 	<link rel="stylesheet" href="assets/leaflet_awesome/leaflet.awesome-markers.css">
@@ -125,6 +126,10 @@
 	    },
     });
 
+var povLayer = L.geoJson(Poverty, {style: style});
+
+
+povLayer.addTo(map);
     ATMLayer.addTo(map);
     GcashLayer.addTo(map);
     BPIGlobeBankoLayer.addTo(map);
@@ -134,11 +139,35 @@
     CebuanaLayer.addTo(map);
     PostOfficeLayer.addTo(map);
     
+function getColor(d) {
+    return d > 56  ? '#E31A1C' :
+           d > 39  ? '#FC4E2A' :
+           d > 26   ? '#FD8D3C' :
+           d > 14   ? '#FEB24C' :
+           d > 0   ? '#FED976' : '#FFEDA0';
+}
+function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.Poverty_In),
+        weight: 1,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.7
+    };
+}
+
+
+
 
 var baseLayers = [	
 	{
 		group: "Map Types",
 		layers: [
+			{
+				name: "Poverty",
+				layer: povLayer
+			},
 			{
 				name: "Simple",
 				layer: L.tileLayer('https://{s}.tiles.mapbox.com/v3/{examples.map-20v6611k}/{z}/{x}/{y}.png')
@@ -191,6 +220,7 @@ var overLayers = [
 var panelLayers = new L.Control.PanelLayers(baseLayers, overLayers);
 
 map.addControl(panelLayers);
+
 
 
 
